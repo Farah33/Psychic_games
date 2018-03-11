@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="header">Crystals Collector
+
+    </div>
+    <div class="Instruction">
+        <h1>How to play the game</h1>
+
+        <ol>
+            <li>The player will have to guess the answer,</li>
+            <li>The player will guess with numbers instead of letters.</li>
+            <li>you will be given randon numbers</li>
+            <li>There will be four crystals displayed as buttons on the page.</li>
+            <li>The player will be shown a random number at the start of the game.</li>
+            <li>hen the player clicks on a crystal, it will add a specific amount of points to the player's total score.</li>
+            <li>your game will hide this amount until the player clicks a crystal.</li>
+            <li>When they do click one, update the player's score counter.</li>
+            <li>the player wins if their total score matches the random number from the beginning of the game</li>
+            <li>The player loses if their score goes above the random number.</li>
+            <li>The game restarts whenever the player wins or loses.</li>
+            <li>and finally you will see how many time you win or lose the Game</li>
+        </ol>
+    </div>
+    <div class="numberToMatch">
+        <h2>Number To Get:
+            <span id="randomNumber"></span>
+        </h2>
+    </div>
+    <div class="WinsAndLosses">
+        <h2>Wins:
+            <br>
+            <spin id "numberWins"></spin>
+            Losses:
+            <spin id="numberLosses"></spin>
+
+        </h2>
+    </div>
+    <div class="games">
+
+    </div>
+    <div class="TotalNumberPress">
+        <h4>your score is:
+            <span id="final"></span>
+        </h4>
+
+    </div>
+    <script text="text/javascript">
+        $(document).ready(function() {
+            var Random = Math.floor(Math.Random() * 101 + 19)
+
+            $("#randomNumber").text(Random);
+
+            var num1 = Math.floor(Math.random() * 11 + 1) //setting up random number for each
+            var num2 = Math.floor(Math.random() * 11 + 1)
+            var num3 = Math.floor(Math.random() * 11 + 1)
+            var num4 = Math.floor(Math.random() * 11 + 1)
+
+            //Declare var 
+            var userTotal = 0;
+            var Wins = 0;
+            var Losses = 0;
+
+            //reseting the whole game
+            $("numberWins").text(Wins);
+            $("numberLosses").text(Losses);
+
+
+            //create a reset function
+            function reset() {
+                Random = Math.floor(Math.random() * 101 + 19);
+                console.log(Random)
+                $("#randomNumber").text(Random);
+                num1 = Math.floor(Math.random() * 11 + 1);
+                num2 = Math.floor(Math.random() * 11 + 1);
+                num3 = Math.floor(Math.random() * 11 + 1);
+                num4 = Math.floor(Math.random() * 11 + 1);
+                userTotal = 0;
+                $("#finalTotal").text(userTotal);
+
+            }
+            //create win function
+            function Yay() {
+                alert("You Won!")
+                Wins++;
+                $("#numberwins").text(Wins);
+                reset();
+            }
+            //create losses function
+
+            function Hurah() {
+                alert("You Lose!");
+                Losses++;
+                $("#numberwins").text(Losses);
+                reset();
+            }
+
+
+
+        });
+    </script>
+    <img src="https://www.awellspringofworksheets.com/wp-content/uploads/2016/03/plane-shape-diamond-color_premium.jpg" class=gemImage id="one" alt="Blue Gem">
+    <img src="http://www.ipdiamond.co.il/Files/Image/gallery//20120131111.jpg" class=gemImage id="two" alt="Green Gem">
+    <img src="http://www.custom-decals.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/1/8/1852-octagon-decal_1.jpg" class=gemImage id="three" alt="Red Gem">
+    <img src="http://s3.amazonaws.com/illustrativemathematics/images/000/001/800/small/hexagon7_2c6a95f89566b7d5e158e3068ab3ae94.jpg?1358139473" class=gemImage id="four" alt="Yellow Gem">
+</body>
+
+</html>
