@@ -4,24 +4,36 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Crystal Collector</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"></link>
+
+
 </head>
 
 <body>
-    <div class="header">Crystals Collector
+    <div class="Header">
+        <h1>Crystal Collector</h1>
 
     </div>
     <div class="Instruction">
-        <h1>How to play the game</h1>
+        <h2>How to play the game</h2>
+        <br>
 
         <ol>
             <li>The player will have to guess the answer,</li>
             <li>The player will guess with numbers instead of letters.</li>
             <li>you will be given randon numbers</li>
             <li>There will be four crystals displayed as buttons on the page.</li>
+            <ul>
+                <li id="purple">Purple</li>
+                <li id="gray">Gray</li>
+                <li id="red">Red</li>
+                <li id="white">White</li>
+            </ul>
             <li>The player will be shown a random number at the start of the game.</li>
             <li>hen the player clicks on a crystal, it will add a specific amount of points to the player's total score.</li>
             <li>your game will hide this amount until the player clicks a crystal.</li>
@@ -31,49 +43,58 @@
             <li>The game restarts whenever the player wins or loses.</li>
             <li>and finally you will see how many time you win or lose the Game</li>
         </ol>
+
     </div>
     <div class="numberToMatch">
-        <h2>Number To Get:
+        <h3>Number To Get:
             <span id="randomNumber"></span>
-        </h2>
+        </h3>
     </div>
-    <div class="WinsAndLosses">
-        <h2>Wins:
-            <br>
-            <spin id "numberWins"></spin>
+    <div class="winsAndLosses">
+        <h4>Wins:
+            <span id="numberWins"></span>
+            </br>
             Losses:
-            <spin id="numberLosses"></spin>
+            <span id="numberLosses"></span>
+        </h4>
+    </div>
 
-        </h2>
     </div>
     <div class="games">
+        <img src="https://www.awellspringofworksheets.com/wp-content/uploads/2016/03/plane-shape-diamond-color_premium.jpg" width="100" height="100" class=gameImage id="one" alt="Purple game">
+        <img src="http://www.ipdiamond.co.il/Files/Image/gallery//20120131111.jpg" width="100" height "100"class=gameImage id="two" alt="Gray game">
+        <img src="http://www.custom-decals.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/1/8/1852-octagon-decal_1.jpg" width="100" height="100" class=gameImage id="three" alt="Red game">
+        <img src="http://s3.amazonaws.com/illustrativemathematics/images/000/001/800/small/hexagon7_2c6a95f89566b7d5e158e3068ab3ae94.jpg?1358139473" width="100" height="100" class=gemImage id="four" alt="White game">
 
     </div>
-    <div class="TotalNumberPress">
+    <div class="userTotal">
         <h4>your score is:
-            <span id="final"></span>
+            <span id="finalTotal"></span>
         </h4>
 
     </div>
-    <script text="text/javascript">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="assets/javascript/games.js">
         $(document).ready(function() {
-            var Random = Math.floor(Math.Random() * 101 + 19)
+            var Random = Math.floor(Math.random() * 100 + 19)
 
             $("#randomNumber").text(Random);
 
-            var num1 = Math.floor(Math.random() * 11 + 1) //setting up random number for each
+            //setting up random number for each
+            var num1 = Math.floor(Math.random() * 11 + 1)
             var num2 = Math.floor(Math.random() * 11 + 1)
             var num3 = Math.floor(Math.random() * 11 + 1)
             var num4 = Math.floor(Math.random() * 11 + 1)
 
             //Declare var 
             var userTotal = 0;
-            var Wins = 0;
-            var Losses = 0;
+            var wins = 0;
+            var losses = 0;
 
             //reseting the whole game
-            $("numberWins").text(Wins);
-            $("numberLosses").text(Losses);
+            $("#numberWins").text(wins);
+            $("#numberLosses").text(losses);
 
 
             //create a reset function
@@ -90,29 +111,92 @@
 
             }
             //create win function
-            function Yay() {
+            function hurah() {
                 alert("You Won!")
-                Wins++;
-                $("#numberwins").text(Wins);
+                wins++;
+                console.log(wins)
+                $("#numberwins").text(wins);
                 reset();
             }
-            //create losses function
+            //create loss function
 
-            function Hurah() {
+            function lost() {
                 alert("You Lose!");
-                Losses++;
-                $("#numberwins").text(Losses);
+                losses++;
+                console.log(losses)
+                $("#numberwins").text(losses);
                 reset();
             }
+            //clicker
+            $("#one").on("click", function() {
+                userTotal = userTotal + num1;
+                console.log("New userTotal" + userTotal);
+                $("#finalTotal").text(userTotal);
 
+                //create if statement within this function for win/lose
+                if (userTotal == Random) {
+                    hurah();
+                } else if (userTotal > Random) {
+                    lost();
+
+                }
+            })
+            $("#two").on("click", function() {
+                userTotal = userTotal + num2;
+                console.log("New userTotal" + userTotal);
+                $("#finalTotal").text(userTotal);
+
+                //create if statement within this function for win/lose
+                if (userTotal == Random) {
+                    hurah();
+                } else if (userTotal > Random) {
+                    lost();
+
+                }
+
+            })
+            $("#three").on("click", function() {
+                userTotal = userTotal + num3;
+                console.log("New userTotal" + userTotal);
+                $("#finalTotal").text(userTotal);
+
+                //create if statement within this function for win/lose
+                if (userTotal == Random) {
+                    wins++;
+                    hurah();
+                } else if (userTotal > Random) {
+                    lost();
+
+                }
+
+            })
+            $("#four").on("click", function() {
+                userTotal = userTotal + num4;
+                console.log("New userTotal" + userTotal);
+                $("#finalTotal").text(userTotal);
+
+                //create if statement within this function for win/lose
+                if (userTotal == Random) {
+                    hurah();
+                } else if (userTotal > Random) {
+                    lost();
+
+                }
+
+            })
 
 
         });
     </script>
-    <img src="https://www.awellspringofworksheets.com/wp-content/uploads/2016/03/plane-shape-diamond-color_premium.jpg" class=gemImage id="one" alt="Blue Gem">
-    <img src="http://www.ipdiamond.co.il/Files/Image/gallery//20120131111.jpg" class=gemImage id="two" alt="Green Gem">
-    <img src="http://www.custom-decals.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/1/8/1852-octagon-decal_1.jpg" class=gemImage id="three" alt="Red Gem">
-    <img src="http://s3.amazonaws.com/illustrativemathematics/images/000/001/800/small/hexagon7_2c6a95f89566b7d5e158e3068ab3ae94.jpg?1358139473" class=gemImage id="four" alt="Yellow Gem">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
+
+
+
 
 </html>

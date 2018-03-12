@@ -1,0 +1,74 @@
+        body {
+            background-color: white;
+            page-break-after: auto;
+            position: absolute;
+            padding: 20%;
+        }
+        
+        div {
+            background-color: blueviolet;
+            color: whitesmoke;
+        }
+        
+        div {
+            margin: 10px;
+            padding: 10px;
+        }
+        
+        h1,
+        h2,
+        h3,
+        span {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        h2 {
+            font-size: 30px;
+            font-stretch: normal;
+        }
+        
+        ul {
+            text-align: right;
+        }
+        
+        ul {
+            list-style-type: square;
+            text-align: left;
+        }
+        
+        div.header,
+        div.games {
+            background-color: darkred;
+            color: yellow;
+        }
+        
+        .numberToMatch {}
+        
+        .WinsAndLosses {
+            margin: 10px;
+            text-align: left;
+        }
+        
+        .userTotal {
+            text-align: justify;
+        }
+        
+        .games {}
+        
+        #purple {
+            color: red;
+        }
+        
+        #gray {
+            color: purple;
+        }
+        
+        #red {
+            color: green;
+        }
+        
+        #white {
+            color: yellow;
+        }
